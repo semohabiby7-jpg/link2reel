@@ -1,0 +1,21 @@
+.env
+__pycache__/
+*.pyc
+temp_img_*.jpg
+temp_audio.mp4
+output_voice.mp3
+output_video.mp4
+.venv/
+venv/
+# Test files
+test_*.mp3
+test_*.mp4
+test_*.py
+step*.json
+step*.mp3
+*.log
+FINAL_*.mp4
+final_voice.mp3
+iphone_final.mp3
+*.mp3
+*.mp4
