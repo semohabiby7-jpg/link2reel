@@ -1,0 +1,17 @@
+{
+  "name": "مرصاد — Link2Reel",
+  "short_name": "مرصاد",
+  "description": "حوّل أي لينك منتج لفيديو تسويقي احترافي في ثواني",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0F1E3D",
+  "theme_color": "#0F1E3D",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["productivity", "business", "video"],
+  "icons": [
+    {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}
