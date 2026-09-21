@@ -33,10 +33,16 @@ header .logo{font-size:42px;font-weight:800;color:var(--accent);display:flex;ali
 header .sub{color:var(--text2);font-size:16px;margin-top:6px}
 /* Top-right controls */
 .topbar{position:fixed;top:14px;left:14px;display:flex;gap:8px;z-index:100}
-.topbar button{background:var(--accent);color:#fff;border:none;border-radius:30px;padding:10px 16px;font-family:'Cairo';font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);display:flex;align-items:center;gap:6px}
-.topbar button:hover{filter:brightness(1.1)}
+.topbar-right{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:100}
+.topbar button,.topbar-right button{background:var(--accent);color:#fff;border:none;border-radius:30px;padding:10px 16px;font-family:'Cairo';font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);display:flex;align-items:center;gap:6px}
+.topbar button:hover,.topbar-right button:hover{filter:brightness(1.1)}
 #installBtn{display:none}
 #installBtn.show{display:flex}
+.share-menu{position:fixed;top:54px;right:14px;background:var(--card);border:1px solid var(--accent);border-radius:14px;padding:8px;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:101;min-width:180px;display:none}
+.share-menu.open{display:block}
+.share-menu a,.share-menu button{display:flex;align-items:center;gap:10px;width:100%;text-align:right;text-decoration:none;padding:10px 12px;border-radius:8px;font-family:'Cairo';font-size:14px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--text)}
+.share-menu a:hover,.share-menu button:hover{background:var(--bg2)}
+.share-menu .ico{font-size:18px}
 /* Settings bar */
 .settings{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding:14px 16px;margin:0 auto;max-width:720px}
 .settings label{display:flex;align-items:center;gap:8px;background:var(--bg2);padding:8px 14px;border-radius:30px;border:1px solid var(--accent);font-size:14px}
@@ -90,7 +96,16 @@ footer .tag{font-size:12px;color:var(--hint);margin-top:4px}
 <body>
 <div class="topbar">
   <button id="themeBtn" onclick="toggleTheme()">🌙 دارك</button>
+</div>
+<div class="topbar-right">
+  <button id="shareSiteBtn" onclick="toggleShareMenu()">🔗 مشاركة الموقع</button>
   <button id="installBtn">📲 ثبّت</button>
+</div>
+<div class="share-menu" id="shareMenu">
+  <a id="shareWa" href="#" target="_blank"><span class="ico">📲</span> واتساب</a>
+  <a id="shareFb" href="#" target="_blank"><span class="ico">📘</span> فيسبوك</a>
+  <a id="shareTw" href="#" target="_blank"><span class="ico">🐦</span> تويتر</a>
+  <button onclick="copySiteLink()"><span class="ico">🔗</span> نسخ الرابط</button>
 </div>
 <header>
   <div class="logo">🎬 مرصاد — Link2Reel</div>
@@ -237,6 +252,24 @@ async function buildVideo(){
     msg('msg5','ok','✅ الفيديو جاهز!');btn.disabled=false;
   }catch(e){msg('msg5','err','❌ '+e.message);btn.disabled=false;}
 }
+// ===== Site share =====
+const SITE_URL='https://semohabiby7-jpg.github.io/link2reel/';
+const SITE_TEXT='🎬 مرصاد — Link2Reel: حوّل أي لينك لفيديو تسويقي احترافي في ثواني';
+(function(){
+  $('shareWa').href='https://wa.me/?text='+encodeURIComponent(SITE_TEXT+' '+SITE_URL);
+  $('shareFb').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(SITE_URL);
+  $('shareTw').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(SITE_TEXT)+'&url='+encodeURIComponent(SITE_URL);
+})();
+function toggleShareMenu(){$('shareMenu').classList.toggle('open');}
+function copySiteLink(){
+  navigator.clipboard.writeText(SITE_URL).then(()=>{
+    $('shareSiteBtn').textContent='✅ تم النسخ';
+    setTimeout(()=>{$('shareSiteBtn').textContent='🔗 مشاركة الموقع';$('shareMenu').classList.remove('open');},1500);
+  });
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.topbar-right')&&!e.target.closest('.share-menu')){$('shareMenu').classList.remove('open');}
+});
 // ===== Theme toggle =====
 function toggleTheme(){
   document.body.classList.toggle('dark');
