@@ -145,16 +145,27 @@ def scrape_product(url: str) -> Dict:
         if result and result.get('title'):
             return result
 
-    # Fallback: requests-based scraper
+    # Fallback: requests-based scraper (session + primed cookies for Amazon bot-detection)
+    session = requests.Session()
+    session.headers.update(HEADERS)
+    is_amazon_eg = 'amazon.eg' in url
+    if platform == 'amazon':
+        try:
+            home = 'https://www.amazon.eg/' if is_amazon_eg else 'https://www.amazon.com/'
+            session.get(home, headers={**HEADERS, 'Accept-Language': 'en-US,en;q=0.9,ar;q=0.8'}, timeout=20)
+        except Exception:
+            pass
     for attempt in range(3):
         try:
             headers = HEADERS.copy()
+            headers['Accept-Language'] = 'en-US,en;q=0.9,ar;q=0.8'
+            headers['Referer'] = 'https://www.amazon.eg/' if is_amazon_eg else 'https://www.google.com/'
             if attempt > 0:
                 headers['User-Agent'] = USER_AGENTS[attempt % len(USER_AGENTS)]
                 import time
                 time.sleep(2)  # Wait between retries
-            
-            response = requests.get(url, headers=headers, timeout=20)
+
+            response = session.get(url, headers=headers, timeout=25)
             response.raise_for_status()
             soup = BeautifulSoup(response.content, 'html.parser')
             
