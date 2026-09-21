@@ -126,7 +126,7 @@ footer .tag{font-size:12px;color:#888;margin-top:4px}
   <div class="tag">حوّل أي لينك لفيديو احترافي في ثواني</div>
 </footer>
 <script>
-const API_BASE='https://link2reel.streamlit.app';
+const API_BASE='https://marsad-api.onrender.com';
 let product=null,script=null,audioPath=null,videoPath=null;
 const $=id=>document.getElementById(id);
 function show(id){$(id).classList.remove('hidden');}
@@ -147,7 +147,7 @@ async function scrapeProduct(){
   const btn=$('btnScrape');btn.disabled=true;
   wait('msg1','جاري قراءة بيانات المنتج...');
   try{
-    const res=await fetch(API_BASE+'/__scraped',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url})});
+    const res=await fetch(API_BASE+'/scrape',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url})});
     if(!res.ok)throw new Error('HTTP '+res.status);
     product=await res.json();
     if(product.error)throw new Error(product.error);
@@ -168,7 +168,7 @@ async function generateScript(){
   const btn=$('btnScript');btn.disabled=true;
   wait('msg3','جاري كتابة السكريبت بالـ AI...');
   try{
-    const res=await fetch(API_BASE+'/__script',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product,tone:$('tone').value})});
+    const res=await fetch(API_BASE+'/script',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product,tone:$('tone').value})});
     if(!res.ok)throw new Error('HTTP '+res.status);
     script=await res.json();
     if(!script.hook)throw new Error('فشل توليد الاسكريبت');
@@ -182,7 +182,7 @@ async function generateVoice(){
   const btn=$('btnVoice');btn.disabled=true;
   wait('msg4','جاري توليد الصوت...');
   try{
-    const res=await fetch(API_BASE+'/__voice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({script,voice:$('voice').value,tone:$('tone').value})});
+    const res=await fetch(API_BASE+'/voice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({script,voice:$('voice').value,tone:$('tone').value})});
     if(!res.ok)throw new Error('HTTP '+res.status);
     const r=await res.json();
     if(!r.success)throw new Error(r.error||'فشل توليد الصوت');
@@ -197,7 +197,7 @@ async function buildVideo(){
   const btn=$('btnVideo');btn.disabled=true;
   wait('msg5','جاري بناء الفيديو... (دقيقة بالظبط)');
   try{
-    const res=await fetch(API_BASE+'/__video',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product,script,audio_path:audioPath})});
+    const res=await fetch(API_BASE+'/video',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product,script,audio_path:audioPath})});
     if(!res.ok)throw new Error('HTTP '+res.status);
     const r=await res.json();
     if(!r.success)throw new Error(r.error||'فشل بناء الفيديو');
