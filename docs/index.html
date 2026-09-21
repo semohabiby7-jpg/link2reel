@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مرصاد — Link2Reel | حوّل أي لينك لفيديو تسويقي</title>
 <meta name="description" content="مرصاد — حوّل أي لينك منتج لفيديو تسويقي احترافي في ثواني.">
-<meta name="theme-color" content="#0F1E3D">
+<meta name="theme-color" content="#ffffff" id="themeMeta">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="مرصاد">
@@ -16,56 +16,82 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#0F1E3D;--navy2:#1a2f5c;--gold:#d4a937;--gold2:#b8901f;--bg:linear-gradient(135deg,#0f1e3d,#1a2f5c)}
-body{font-family:'Cairo',sans-serif;background:var(--bg);color:#fff;min-height:100vh}
+:root{
+  --bg:#ffffff;--bg2:#f5f5f5;--card:#ffffff;--card-border:#e5e5e5;
+  --text:#1a1a1a;--text2:#666;--accent:#dc2626;--accent2:#b91c1c;
+  --input-bg:#ffffff;--input-border:#dc2626;--hint:#888;--box-bg:#fafafa;
+}
+body.dark{
+  --bg:#0f0f0f;--bg2:#1a1a1a;--card:#1a1a1a;--card-border:#333;
+  --text:#ffffff;--text2:#aaa;--accent:#dc2626;--accent2:#ef4444;
+  --input-bg:#222;--input-border:#dc2626;--hint:#888;--box-bg:#161616;
+}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
+/* Header */
 header{text-align:center;padding:24px 16px 8px}
-header .logo{font-size:42px;font-weight:800;color:var(--gold);display:flex;align-items:center;justify-content:center;gap:10px}
-header .sub{color:#ccc;font-size:16px;margin-top:6px}
-#installBtn{position:fixed;top:14px;left:14px;background:var(--gold);color:var(--navy);border:none;border-radius:30px;padding:10px 18px;font-family:'Cairo';font-weight:700;font-size:14px;cursor:pointer;display:none;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.3)}
-#installBtn.show{display:flex;align-items:center;gap:6px}
+header .logo{font-size:42px;font-weight:800;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:10px}
+header .sub{color:var(--text2);font-size:16px;margin-top:6px}
+/* Top-right controls */
+.topbar{position:fixed;top:14px;left:14px;display:flex;gap:8px;z-index:100}
+.topbar button{background:var(--accent);color:#fff;border:none;border-radius:30px;padding:10px 16px;font-family:'Cairo';font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);display:flex;align-items:center;gap:6px}
+.topbar button:hover{filter:brightness(1.1)}
+#installBtn{display:none}
+#installBtn.show{display:flex}
+/* Settings bar */
 .settings{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding:14px 16px;margin:0 auto;max-width:720px}
-.settings label{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);padding:8px 14px;border-radius:30px;border:1px solid rgba(212,169,55,.3);font-size:14px}
-.settings select{background:rgba(255,255,255,.12);color:#fff;border:1px solid var(--gold);border-radius:8px;padding:4px 10px;font-family:'Cairo';font-size:14px}
-.settings select option{background:var(--navy);color:#fff}
+.settings label{display:flex;align-items:center;gap:8px;background:var(--bg2);padding:8px 14px;border-radius:30px;border:1px solid var(--accent);font-size:14px}
+.settings select{background:var(--input-bg);color:var(--text);border:1px solid var(--accent);border-radius:8px;padding:4px 10px;font-family:'Cairo';font-size:14px}
+.settings select option{background:var(--bg);color:var(--text)}
+.settings .reset{background:var(--accent);color:#fff;border:none;border-radius:30px;padding:8px 16px;font-family:'Cairo';font-weight:700;font-size:14px;cursor:pointer}
+/* Boxes */
 .boxes{max-width:760px;margin:0 auto;padding:0 16px 60px}
-.box{background:rgba(255,255,255,.05);border:1px solid rgba(212,169,55,.35);border-radius:16px;padding:20px;margin-bottom:18px}
-.box-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:var(--gold);color:var(--navy);border-radius:50%;font-weight:800;font-size:15px;margin-left:8px}
-.box h3{display:flex;align-items:center;gap:10px;color:#fff;font-size:20px;margin-bottom:6px}
-.box .hint{color:#999;font-size:13px;margin-bottom:14px}
-.box input[type=text]{width:100%;background:rgba(255,255,255,.1);color:#fff;border:1px solid var(--gold);border-radius:10px;padding:12px 14px;font-family:'Cairo';font-size:15px}
+.box{background:var(--box-bg);border:1px solid var(--accent);border-radius:16px;padding:20px;margin-bottom:18px}
+.box-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:var(--accent);color:#fff;border-radius:50%;font-weight:800;font-size:15px;margin-left:8px}
+.box h3{display:flex;align-items:center;gap:10px;color:var(--text);font-size:20px;margin-bottom:6px}
+.box .hint{color:var(--hint);font-size:13px;margin-bottom:14px}
+.box input[type=text]{width:100%;background:var(--input-bg);color:var(--text);border:1px solid var(--accent);border-radius:10px;padding:12px 14px;font-family:'Cairo';font-size:15px}
 .box input[type=text]::placeholder{color:#aaa}
-.btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);border:none;border-radius:10px;padding:13px;font-family:'Cairo';font-weight:700;font-size:16px;cursor:pointer;margin-top:12px;transition:transform .1s,filter .2s}
+.btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:13px;font-family:'Cairo';font-weight:700;font-size:16px;cursor:pointer;margin-top:12px;transition:filter .2s,transform .1s}
 .btn:hover{filter:brightness(1.1)}
 .btn:active{transform:scale(.98)}
 .btn:disabled{filter:grayscale(.6);cursor:wait}
+/* Product info */
 .product-info{margin:12px 0}
 .product-info .row{margin:4px 0;font-size:15px}
-.product-info b{color:var(--gold)}
+.product-info b{color:var(--accent)}
 .images-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:12px}
-.images-grid img{width:100%;border-radius:10px;border:1px solid rgba(212,169,55,.3)}
-.script-block{background:rgba(0,0,0,.25);border-radius:10px;padding:14px;margin-top:10px}
+.images-grid img{width:100%;border-radius:10px;border:1px solid var(--card-border)}
+/* Script */
+.script-block{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:14px;margin-top:10px}
 .script-block .part{margin:8px 0;font-size:15px;line-height:1.7}
-.script-block .part b{color:var(--gold);display:inline-block;min-width:90px}
+.script-block .part b{color:var(--accent);display:inline-block;min-width:90px}
+/* Players */
 audio,video{width:100%;margin-top:12px;border-radius:10px}
+/* Actions */
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .actions a,.actions button{flex:1;min-width:130px;text-align:center;text-decoration:none;padding:11px;border-radius:10px;font-family:'Cairo';font-weight:700;font-size:14px;cursor:pointer;border:none}
-.dl{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)!important}
+.dl{background:var(--bg2);color:var(--text);border:1px solid var(--card-border)!important}
 .share-wa{background:#25D366;color:#fff}
 .share-fb{background:#1877F2;color:#fff}
+/* Messages */
 .msg{padding:12px 14px;border-radius:10px;margin-top:12px;font-size:15px}
-.msg.ok{background:rgba(46,204,113,.15);border:1px solid #2ecc71;color:#2ecc71}
-.msg.err{background:rgba(231,76,60,.15);border:1px solid #e74c3c;color:#e74c3c}
-.msg.wait{background:rgba(212,169,55,.12);border:1px solid var(--gold);color:var(--gold)}
-.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(212,169,55,.3);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-left:8px}
+.msg.ok{background:rgba(46,204,113,.15);border:1px solid #2ecc71;color:#16a34a}
+.msg.err{background:rgba(220,38,38,.1);border:1px solid var(--accent);color:var(--accent)}
+.msg.wait{background:rgba(220,38,38,.08);border:1px solid var(--accent);color:var(--accent)}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(220,38,38,.3);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-left:8px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hidden{display:none}
-footer{text-align:center;padding:24px;color:var(--gold);font-size:14px}
-footer .tag{font-size:12px;color:#888;margin-top:4px}
+/* Footer */
+footer{text-align:center;padding:24px;color:var(--accent);font-size:14px}
+footer .tag{font-size:12px;color:var(--hint);margin-top:4px}
 @media(max-width:480px){header .logo{font-size:32px}.box h3{font-size:17px}.settings{gap:8px}}
 </style>
 </head>
 <body>
-<button id="installBtn">📲 ثبّت التطبيق</button>
+<div class="topbar">
+  <button id="themeBtn" onclick="toggleTheme()">🌙 دارك</button>
+  <button id="installBtn">📲 ثبّت</button>
+</div>
 <header>
   <div class="logo">🎬 مرصاد — Link2Reel</div>
   <div class="sub">حوّل أي لينك منتج لفيديو تسويقي احترافي في ثواني</div>
@@ -73,7 +99,7 @@ footer .tag{font-size:12px;color:#888;margin-top:4px}
 <div class="settings">
   <label>🗣️ اللهجة <select id="tone"><option value="egyptian">مصرية</option><option value="english">إنجليزية</option></select></label>
   <label>🎙️ الصوت <select id="voice"><option value="male">ذكر</option><option value="female">أنثى</option></select></label>
-  <button class="btn" style="flex:0;min-width:auto;padding:8px 16px;margin:0" onclick="resetAll()">♻️ إعادة البدء</button>
+  <button class="reset" onclick="resetAll()">♻️ إعادة البدء</button>
 </div>
 <div class="boxes">
   <div class="box" id="box1">
@@ -211,6 +237,18 @@ async function buildVideo(){
     msg('msg5','ok','✅ الفيديو جاهز!');btn.disabled=false;
   }catch(e){msg('msg5','err','❌ '+e.message);btn.disabled=false;}
 }
+// ===== Theme toggle =====
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  const dark=document.body.classList.contains('dark');
+  $('themeBtn').textContent=dark?'☀️ لايت':'🌙 دارك';
+  document.getElementById('themeMeta').setAttribute('content',dark?'#0f0f0f':'#ffffff');
+  try{localStorage.setItem('marsad-theme',dark?'dark':'light');}catch(e){}
+}
+(function(){
+  try{const t=localStorage.getItem('marsad-theme');if(t==='dark'){document.body.classList.add('dark');$('themeBtn').textContent='☀️ لايت';document.getElementById('themeMeta').setAttribute('content','#0f0f0f');}}catch(e){}
+})();
+// ===== PWA =====
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('installBtn').classList.add('show');});
 $('installBtn').addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$('installBtn').classList.remove('show');});
