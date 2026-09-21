@@ -27,11 +27,8 @@ body.dark{
   --input-bg:#222;--input-border:#dc2626;--hint:#888;--box-bg:#161616;
 }
 body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
-/* Header */
 header{text-align:center;padding:24px 16px 8px}
-header .logo{font-size:42px;font-weight:800;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:10px}
 header .sub{color:var(--text2);font-size:16px;margin-top:6px}
-/* Top-right controls */
 .topbar{position:fixed;top:14px;left:14px;display:flex;gap:8px;z-index:100}
 .topbar-right{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:100}
 .topbar button,.topbar-right button{background:var(--accent);color:#fff;border:none;border-radius:30px;padding:10px 16px;font-family:'Cairo';font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);display:flex;align-items:center;gap:6px}
@@ -43,13 +40,11 @@ header .sub{color:var(--text2);font-size:16px;margin-top:6px}
 .share-menu a,.share-menu button{display:flex;align-items:center;gap:10px;width:100%;text-align:right;text-decoration:none;padding:10px 12px;border-radius:8px;font-family:'Cairo';font-size:14px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--text)}
 .share-menu a:hover,.share-menu button:hover{background:var(--bg2)}
 .share-menu .ico{font-size:18px}
-/* Settings bar */
 .settings{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding:14px 16px;margin:0 auto;max-width:720px}
 .settings label{display:flex;align-items:center;gap:8px;background:var(--bg2);padding:8px 14px;border-radius:30px;border:1px solid var(--accent);font-size:14px}
 .settings select{background:var(--input-bg);color:var(--text);border:1px solid var(--accent);border-radius:8px;padding:4px 10px;font-family:'Cairo';font-size:14px}
 .settings select option{background:var(--bg);color:var(--text)}
 .settings .reset{background:var(--accent);color:#fff;border:none;border-radius:30px;padding:8px 16px;font-family:'Cairo';font-weight:700;font-size:14px;cursor:pointer}
-/* Boxes */
 .boxes{max-width:760px;margin:0 auto;padding:0 16px 60px}
 .box{background:var(--box-bg);border:1px solid var(--accent);border-radius:16px;padding:20px;margin-bottom:18px}
 .box-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:var(--accent);color:#fff;border-radius:50%;font-weight:800;font-size:15px;margin-left:8px}
@@ -61,25 +56,22 @@ header .sub{color:var(--text2);font-size:16px;margin-top:6px}
 .btn:hover{filter:brightness(1.1)}
 .btn:active{transform:scale(.98)}
 .btn:disabled{filter:grayscale(.6);cursor:wait}
-/* Product info */
 .product-info{margin:12px 0}
 .product-info .row{margin:4px 0;font-size:15px}
 .product-info b{color:var(--accent)}
 .images-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:12px}
 .images-grid img{width:100%;border-radius:10px;border:1px solid var(--card-border)}
-/* Script */
 .script-block{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:14px;margin-top:10px}
 .script-block .part{margin:8px 0;font-size:15px;line-height:1.7}
 .script-block .part b{color:var(--accent);display:inline-block;min-width:90px}
-/* Players */
 audio,video{width:100%;margin-top:12px;border-radius:10px}
-/* Actions */
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.actions a,.actions button{flex:1;min-width:130px;text-align:center;text-decoration:none;padding:11px;border-radius:10px;font-family:'Cairo';font-weight:700;font-size:14px;cursor:pointer;border:none}
+.actions a,.actions button{flex:1;min-width:110px;text-align:center;text-decoration:none;padding:11px;border-radius:10px;font-family:'Cairo';font-weight:700;font-size:14px;cursor:pointer;border:none}
 .dl{background:var(--bg2);color:var(--text);border:1px solid var(--card-border)!important}
+.copy-btn{background:var(--bg2);color:var(--text);border:1px solid var(--card-border)!important}
 .share-wa{background:#25D366;color:#fff}
 .share-fb{background:#1877F2;color:#fff}
-/* Messages */
+.share-tw{background:#000;color:#fff}
 .msg{padding:12px 14px;border-radius:10px;margin-top:12px;font-size:15px}
 .msg.ok{background:rgba(46,204,113,.15);border:1px solid #2ecc71;color:#16a34a}
 .msg.err{background:rgba(220,38,38,.1);border:1px solid var(--accent);color:var(--accent)}
@@ -87,10 +79,9 @@ audio,video{width:100%;margin-top:12px;border-radius:10px}
 .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(220,38,38,.3);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-left:8px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hidden{display:none}
-/* Footer */
 footer{text-align:center;padding:24px;color:var(--accent);font-size:14px}
 footer .tag{font-size:12px;color:var(--hint);margin-top:4px}
-@media(max-width:480px){header .logo{font-size:32px}.box h3{font-size:17px}.settings{gap:8px}}
+@media(max-width:480px){.box h3{font-size:17px}.settings{gap:8px}.actions a,.actions button{min-width:90px;font-size:12px}}
 </style>
 </head>
 <body>
@@ -117,48 +108,73 @@ footer .tag{font-size:12px;color:var(--hint);margin-top:4px}
   <button class="reset" onclick="resetAll()">♻️ إعادة البدء</button>
 </div>
 <div class="boxes">
+  <!-- Box 1: ضع الرابط -->
   <div class="box" id="box1">
-    <h3><span class="box-num">1</span> خانة اللينك</h3>
+    <h3><span class="box-num">1</span> ضع الرابط</h3>
     <div class="hint">حط رابط المنتج واضغط اقرا المنتج</div>
     <input type="text" id="url" placeholder="https://www.amazon.eg/dp/...">
     <button class="btn" id="btnScrape" onclick="scrapeProduct()">🔎 اقرا المنتج</button>
     <div id="msg1"></div>
+    <div id="actions1" class="actions hidden">
+      <a class="share-wa" id="wa1" target="_blank">📲 واتساب</a>
+      <a class="share-fb" id="fb1" target="_blank">📘 فيسبوك</a>
+      <a class="share-tw" id="tw1" target="_blank">🐦 تويتر</a>
+      <button class="copy-btn" id="cp1" onclick="copyText('link')">🔗 نسخ</button>
+    </div>
   </div>
+  <!-- Box 2: توليد الصور -->
   <div class="box hidden" id="box2">
-    <h3><span class="box-num">2</span> خانة الصور</h3>
+    <h3><span class="box-num">2</span> توليد الصور</h3>
     <div id="productInfo"></div>
     <div id="imagesGrid" class="images-grid"></div>
+    <div id="actions2" class="actions hidden" style="margin-top:14px">
+      <a class="share-wa" id="wa2" target="_blank">📲 واتساب</a>
+      <a class="share-fb" id="fb2" target="_blank">📘 فيسبوك</a>
+      <a class="share-tw" id="tw2" target="_blank">🐦 تويتر</a>
+      <button class="copy-btn" id="cp2" onclick="copyText('product')">🔗 نسخ</button>
+    </div>
   </div>
+  <!-- Box 3: كتابة الاسكريبت -->
   <div class="box hidden" id="box3">
-    <h3><span class="box-num">3</span> خانة الاسكريبت</h3>
+    <h3><span class="box-num">3</span> كتابة الاسكريبت</h3>
     <div class="hint">السكريبت التسويقي اللي هيتقال في الفيديو</div>
     <button class="btn" id="btnScript" onclick="generateScript()">📝 ولّد الاسكريبت التسويقي</button>
     <div id="msg3"></div>
     <div id="scriptBlock" class="script-block hidden"></div>
-    <div id="scriptActions" class="actions hidden">
-      <a class="dl" id="dlScript" download="script.txt">📄 حمّل الاسكريبت</a>
+    <div id="actions3" class="actions hidden">
+      <a class="dl" id="dlScript" download="script.txt">📄 تحميل</a>
+      <button class="copy-btn" id="cp3" onclick="copyText('script')">🔗 نسخ</button>
+      <a class="share-wa" id="wa3" target="_blank">📲 واتساب</a>
+      <a class="share-fb" id="fb3" target="_blank">📘 فيسبوك</a>
+      <a class="share-tw" id="tw3" target="_blank">🐦 تويتر</a>
     </div>
   </div>
+  <!-- Box 4: توليد الصوت -->
   <div class="box hidden" id="box4">
-    <h3><span class="box-num">4</span> خانة توليد الاسكريبت بالصوت</h3>
+    <h3><span class="box-num">4</span> توليد الصوت</h3>
     <div class="hint">حوّل الاسكريبت لصوت تعليق صوتي</div>
     <button class="btn" id="btnVoice" onclick="generateVoice()">🎙️ ولّد الصوت</button>
     <div id="msg4"></div>
     <audio id="audioPlayer" controls class="hidden"></audio>
-    <div id="voiceActions" class="actions hidden">
-      <a class="dl" id="dlVoice" download="voiceover.mp3">🎵 حمّل الصوت</a>
+    <div id="actions4" class="actions hidden">
+      <a class="dl" id="dlVoice" download="voiceover.mp3">🎵 تحميل</a>
+      <a class="share-wa" id="wa4" target="_blank">📲 واتساب</a>
+      <a class="share-fb" id="fb4" target="_blank">📘 فيسبوك</a>
+      <a class="share-tw" id="tw4" target="_blank">🐦 تويتر</a>
     </div>
   </div>
+  <!-- Box 5: انشاء الفيديو -->
   <div class="box hidden" id="box5">
-    <h3><span class="box-num">5</span> خانة الفيديو</h3>
+    <h3><span class="box-num">5</span> انشاء الفيديو</h3>
     <div class="hint">اجمع الصور + الصوت في فيديو نهائي جاهز للنشر</div>
     <button class="btn" id="btnVideo" onclick="buildVideo()">🎬 ابني الفيديو</button>
     <div id="msg5"></div>
     <video id="videoPlayer" controls class="hidden"></video>
-    <div id="videoActions" class="actions hidden">
-      <a class="dl" id="dlVideo" download="reel.mp4">⬇️ تحميل الفيديو</a>
-      <a class="share-wa" id="shareWa" target="_blank">📲 واتساب</a>
-      <a class="share-fb" id="shareFb" target="_blank">📘 فيسبوك</a>
+    <div id="actions5" class="actions hidden">
+      <a class="dl" id="dlVideo" download="reel.mp4">⬇️ تحميل</a>
+      <a class="share-wa" id="wa5" target="_blank">📲 واتساب</a>
+      <a class="share-fb" id="fb5" target="_blank">📘 فيسبوك</a>
+      <a class="share-tw" id="tw5" target="_blank">🐦 تويتر</a>
     </div>
   </div>
 </div>
@@ -168,6 +184,7 @@ footer .tag{font-size:12px;color:var(--hint);margin-top:4px}
 </footer>
 <script>
 const API_BASE='https://marsad-api.onrender.com';
+const SITE_URL='https://semohabiby7-jpg.github.io/link2reel/';
 let product=null,script=null,audioPath=null,videoPath=null;
 const $=id=>document.getElementById(id);
 function show(id){$(id).classList.remove('hidden');}
@@ -177,11 +194,32 @@ function wait(id,txt){$(id).innerHTML='<div class="msg wait">'+txt+'<span class=
 function resetAll(){
   product=script=audioPath=videoPath=null;
   ['box2','box3','box4','box5'].forEach(hide);
-  ['scriptBlock','scriptActions','voiceActions','videoActions'].forEach(hide);
+  ['scriptBlock','actions1','actions2','actions3','actions4','actions5'].forEach(hide);
   $('audioPlayer').classList.add('hidden');$('videoPlayer').classList.add('hidden');
-  $('msg1').innerHTML=$('msg3').innerHTML=$('msg4').innerHTML=$('msg5').innerHTML='';
+  ['msg1','msg3','msg4','msg5'].forEach(id=>$(id).innerHTML='');
   $('url').value='';window.scrollTo(0,0);
 }
+// مشاركة المحتوى
+function shareLink(url,text){
+  return {
+    wa:'https://wa.me/?text='+encodeURIComponent(text+' '+url),
+    fb:'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url),
+    tw:'https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(url)
+  };
+}
+function setShareActions(prefix,s,url,t){
+  $(prefix+'wa').href=s.wa;$(prefix+'fb').href=s.fb;$(prefix+'tw').href=s.tw;
+  if(url)$(prefix+'_url')&&($(prefix+'_url').value=url);
+  if(t)window['_shareText_'+prefix]=t;
+}
+async function copyText(type){
+  let t='';
+  if(type==='link')t=$('url').value||SITE_URL;
+  else if(type==='product')t=product?('المنتج: '+product.title+(product.price?' — '+product.price:''):'');
+  else if(type==='script')t=script?script.full_script||'':'';
+  try{await navigator.clipboard.writeText(t);alert('✅ تم النسخ');}catch(e){alert('ما قدرتش أنسخ');}
+}
+// ===== Step 1: Scrape =====
 async function scrapeProduct(){
   const url=$('url').value.trim();
   if(!url){msg('msg1','err','اكتب لينك المنتج الأول!');return;}
@@ -202,9 +240,16 @@ async function scrapeProduct(){
     const imgs=product.images||[];
     $('imagesGrid').innerHTML=imgs.slice(0,4).map(u=>'<img src="'+u+'" onerror="this.style.display=\'none\'">').join('');
     msg('msg1','ok','✅ تم قراءة المنتج — روح للخانة التانية');
-    show('box2');show('box3');btn.disabled=false;
+    // مشاركة الخانة 1 + 2
+    const s=shareLink(url,'🎬 شف المنتج ده على مرصاد');
+    setShareActions('wa1',s,url,'🎬 شف المنتج ده على مرصاد');
+    setShareActions('wa2',s,url,'🎬 شف المنتج ده على مرصاد');
+    $('wa1').href=s.wa;$('fb1').href=s.fb;$('tw1').href=s.tw;
+    $('wa2').href=s.wa;$('fb2').href=s.fb;$('tw2').href=s.tw;
+    show('actions1');show('box2');show('box3');show('actions2');btn.disabled=false;
   }catch(e){msg('msg1','err','❌ '+e.message);btn.disabled=false;}
 }
+// ===== Step 3: Script =====
 async function generateScript(){
   const btn=$('btnScript');btn.disabled=true;
   wait('msg3','جاري كتابة السكريبت بالـ AI...');
@@ -215,10 +260,16 @@ async function generateScript(){
     if(!script.hook)throw new Error('فشل توليد الاسكريبت');
     $('scriptBlock').innerHTML='<div class="part"><b>HOOK:</b> '+(script.hook||'')+'</div><div class="part"><b>PROBLEM:</b> '+(script.problem||'')+'</div><div class="part"><b>SOLUTION:</b> '+(script.solution||'')+'</div><div class="part"><b>FEATURES:</b> '+(script.features||'')+'</div><div class="part"><b>CTA:</b> '+(script.cta||'')+'</div>';
     show('scriptBlock');
-    if(script.full_script){$('dlScript').href=URL.createObjectURL(new Blob([script.full_script],{type:'text/plain'}));show('scriptActions');}
+    if(script.full_script){
+      $('dlScript').href=URL.createObjectURL(new Blob([script.full_script],{type:'text/plain'}));
+      const s=shareLink(SITE_URL,script.full_script.slice(0,100)+'...');
+      $('wa3').href=s.wa;$('fb3').href=s.fb;$('tw3').href=s.tw;
+      show('actions3');
+    }
     msg('msg3','ok','✅ السكريبت جاهز');show('box4');btn.disabled=false;
   }catch(e){msg('msg3','err','❌ '+e.message);btn.disabled=false;}
 }
+// ===== Step 4: Voice =====
 async function generateVoice(){
   const btn=$('btnVoice');btn.disabled=true;
   wait('msg4','جاري توليد الصوت...');
@@ -230,10 +281,13 @@ async function generateVoice(){
     audioPath=r.audio_url||r.path;
     $('audioPlayer').src=API_BASE+'/'+audioPath;
     $('dlVoice').href=$('audioPlayer').src;
-    show('audioPlayer');show('voiceActions');
+    const s=shareLink(SITE_URL,'🎬 صوت تسويقي اتعمل بمرصاد');
+    $('wa4').href=s.wa;$('fb4').href=s.fb;$('tw4').href=s.tw;
+    show('audioPlayer');show('actions4');
     msg('msg4','ok','✅ الصوت جاهز — روح للخانة الخامسة');show('box5');btn.disabled=false;
   }catch(e){msg('msg4','err','⚠️ '+e.message);btn.disabled=false;}
 }
+// ===== Step 5: Video =====
 async function buildVideo(){
   const btn=$('btnVideo');btn.disabled=true;
   wait('msg5','جاري بناء الفيديو... (دقيقة بالظبط)');
@@ -245,20 +299,18 @@ async function buildVideo(){
     videoPath=r.video_url||r.path;
     $('videoPlayer').src=API_BASE+'/'+videoPath;
     $('dlVideo').href=$('videoPlayer').src;
-    const share='🎬 فيديو تسويقي اتعمل بمرصاد — Link2Reel';
-    $('shareWa').href='https://wa.me/?text='+encodeURIComponent(share+' '+API_BASE);
-    $('shareFb').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(API_BASE);
-    show('videoPlayer');show('videoActions');
+    const s=shareLink(SITE_URL,'🎬 فيديو تسويقي اتعمل بمرصاد — Link2Reel');
+    $('wa5').href=s.wa;$('fb5').href=s.fb;$('tw5').href=s.tw;
+    show('videoPlayer');show('actions5');
     msg('msg5','ok','✅ الفيديو جاهز!');btn.disabled=false;
   }catch(e){msg('msg5','err','❌ '+e.message);btn.disabled=false;}
 }
 // ===== Site share =====
-const SITE_URL='https://semohabiby7-jpg.github.io/link2reel/';
-const SITE_TEXT='🎬 مرصاد — Link2Reel: حوّل أي لينك لفيديو تسويقي احترافي في ثواني';
 (function(){
-  $('shareWa').href='https://wa.me/?text='+encodeURIComponent(SITE_TEXT+' '+SITE_URL);
+  const st='🎬 مرصاد — Link2Reel: حوّل أي لينك لفيديو تسويقي احترافي في ثواني';
+  $('shareWa').href='https://wa.me/?text='+encodeURIComponent(st+' '+SITE_URL);
   $('shareFb').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(SITE_URL);
-  $('shareTw').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(SITE_TEXT)+'&url='+encodeURIComponent(SITE_URL);
+  $('shareTw').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(st)+'&url='+encodeURIComponent(SITE_URL);
 })();
 function toggleShareMenu(){$('shareMenu').classList.toggle('open');}
 function copySiteLink(){
