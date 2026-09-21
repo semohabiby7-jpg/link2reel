@@ -13,6 +13,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Streamlit Cloud: .env مش موجود، فنسحب المفتاح من st.secrets ونحقنه كـ env var
+# قبل استيراد الموديولات (لأن script_generator بيقرأ GEMINI_API_KEY وقت الاستيراد)
+try:
+    if 'GEMINI_API_KEY' in st.secrets:
+        os.environ['GEMINI_API_KEY'] = st.secrets['GEMINI_API_KEY']
+except Exception:
+    pass
+
 # Import modules
 from scraper import scrape_product
 from script_generator import generate_script
