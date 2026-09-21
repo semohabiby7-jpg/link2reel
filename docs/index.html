@@ -108,7 +108,7 @@ footer .tag{font-size:12px;color:var(--hint);margin-top:4px}
   <button onclick="copySiteLink()"><span class="ico">🔗</span> نسخ الرابط</button>
 </div>
 <header>
-  <img id="logoImg" src="logo-light.webp" alt="مرصاد — Link2Reel" style="max-width:140px;border-radius:14px;margin-bottom:8px">
+  <img id="logoImg" src="logo-dark.webp" alt="مرصاد — Link2Reel" style="max-width:140px;border-radius:14px;margin-bottom:8px">
   <div class="sub">حوّل أي لينك منتج لفيديو تسويقي احترافي في ثواني</div>
 </header>
 <div class="settings">
@@ -276,11 +276,11 @@ function toggleTheme(){
   const dark=document.body.classList.contains('dark');
   $('themeBtn').textContent=dark?'☀️ لايت':'🌙 دارك';
   document.getElementById('themeMeta').setAttribute('content',dark?'#0f0f0f':'#ffffff');
-  document.getElementById('logoImg').src=dark?'logo-dark.webp':'logo-light.webp';
+  document.getElementById('logoImg').src=dark?'logo-light.webp':'logo-dark.webp';
   try{localStorage.setItem('marsad-theme',dark?'dark':'light');}catch(e){}
 }
 (function(){
-  try{const t=localStorage.getItem('marsad-theme');if(t==='dark'){document.body.classList.add('dark');$('themeBtn').textContent='☀️ لايت';document.getElementById('themeMeta').setAttribute('content','#0f0f0f');document.getElementById('logoImg').src='logo-dark.webp';}}catch(e){}
+  try{const t=localStorage.getItem('marsad-theme');if(t==='dark'){document.body.classList.add('dark');$('themeBtn').textContent='☀️ لايت';document.getElementById('themeMeta').setAttribute('content','#0f0f0f');document.getElementById('logoImg').src='logo-light.webp';}}catch(e){}
 })();
 // ===== PWA =====
 let deferredPrompt;
